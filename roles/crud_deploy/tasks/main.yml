@@ -1,0 +1,16 @@
+---
+    
+- name: example copying file with owner and permissions
+  copy:
+    src: crudApp.war
+    dest: /opt/tomcat/webapps/crudapp.war
+    owner: tomcat
+    group: tomcat
+    mode: u=rwx,g=rwx,o=r
+  tags: deploy
+  
+- name: Make sure a service is running
+  systemd:
+    state: restarted
+    name: tomcat
+  tags: deploy

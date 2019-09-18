@@ -1,0 +1,19 @@
+---
+
+- hosts: appservers
+  remote_user: ansible
+  become: yes
+  roles:
+    - tomcat
+
+- hosts: dbservers
+  remote_user: ansible
+  become: yes
+  roles:
+    - mysql
+
+- hosts: appservers
+  remote_user: ansible
+  become: yes
+  roles:
+    - crud_deploy
